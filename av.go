@@ -117,7 +117,7 @@ func (c *Client) buildRequestPath(params map[string]string) *url.URL {
 	// base parameters
 	query := endpoint.Query()
 	query.Set(queryApiKey, c.apiKey)
-	query.Set(queryDataType, valueCsv)
+	query.Set(queryDataType, valueJson)
 	query.Set(queryOutputSize, valueCompact)
 
 	// additional parameters
@@ -151,8 +151,8 @@ func (c *Client) StockTimeSeriesIntraday(timeInterval TimeInterval, symbol strin
 // Data is returned from past to present.
 func (c *Client) StockTimeSeries(timeSeries TimeSeries, symbol string, optionalOutputSize ...OutputSize) ([]*TimeSeriesValue, error) {
 	endpoint := c.buildRequestPath(map[string]string{
-		queryEndpoint: timeSeries.keyName(),
-		querySymbol:   symbol,
+		queryEndpoint:   timeSeries.keyName(),
+		querySymbol:     symbol,
 		queryOutputSize: getOutputSize(optionalOutputSize),
 	})
 	response, err := c.conn.Request(endpoint)
@@ -212,7 +212,7 @@ func (c *Client) SymbolSearch(keywords string) (*SymbolMatches, error) {
 
 	return matches, nil
 }
-	
+
 // StockQuote is a lightweight alternative to the time series APIs, this service returns the latest price and volume
 // information for a security of your choice.
 func (c *Client) StockQuote(symbol string) (*QuoteValue, error) {
