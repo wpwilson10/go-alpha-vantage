@@ -27,7 +27,8 @@ const (
 
 	valueCompact                  = "compact"
 	valueFull                     = "full"
-	valueCsv                      = "csv" // this implementation does not understand json
+	valueJson                     = "json" // implemented for symbol search
+	valueCsv                      = "csv"  // most of this implementation does not understand json
 	valueDigitcalCurrencyEndpoint = "DIGITAL_CURRENCY_INTRADAY"
 	valueSymbolSearchEndpoint     = "SYMBOL_SEARCH"
 
