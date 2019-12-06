@@ -27,7 +27,7 @@ const (
 
 	valueCompact                  = "compact"
 	valueFull                     = "full"
-	valueJson                     = "json"
+	valueCsv                      = "csv" // this implementation does not understand json
 	valueDigitcalCurrencyEndpoint = "DIGITAL_CURRENCY_INTRADAY"
 	valueSymbolSearchEndpoint     = "SYMBOL_SEARCH"
 
@@ -117,7 +117,7 @@ func (c *Client) buildRequestPath(params map[string]string) *url.URL {
 	// base parameters
 	query := endpoint.Query()
 	query.Set(queryApiKey, c.apiKey)
-	query.Set(queryDataType, valueJson)
+	query.Set(queryDataType, valueCsv)
 	query.Set(queryOutputSize, valueCompact)
 
 	// additional parameters
